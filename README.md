@@ -1,1 +1,0 @@
-# Herói do Coliseu
