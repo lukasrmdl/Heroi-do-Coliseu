@@ -18,8 +18,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const user = {
-        email: email,
-        password: password
+        userEmail: email,
+        userPassword: password
     }
 
     const validadorInput = () => {
@@ -30,9 +30,11 @@ const Login = () => {
         event.preventDefault();
         try {
             setLoading(true);
-            const response = await signInWithEmailAndPassword(auth, user.email, user.password);
-            localStorage.setItem("email", response.user.email)
-            
+            const response = await signInWithEmailAndPassword(auth, user.userEmail, user.userPassword);
+            localStorage.setItem("email", response.user.userEmail);
+            localStorage.setItem("pass", response.user.userPassword);
+
+
             if (response.user) {
                 alert('Usuário logado com sucesso!');
                 //navegar para a home
@@ -59,8 +61,12 @@ const Login = () => {
                 alert('Erro, Usuário desabilitado!');
                 setLoading(false);
                 break;
+            case 'auth/missing-password':
+                alert('Erro, Informe a sua senha!');
+                setLoading(false);
+                break;
               default:
-                alert('Erro, Erro ao fazer login!');
+                alert('Erro ao fazer login!');
                 setLoading(false);
                 break;
             }
@@ -85,7 +91,7 @@ const Login = () => {
                 />
                 <div>
                     <p>Não possui conta?</p>
-                    <a>Cadastrar</a>
+                    <a href='*'>Cadastrar</a>
                 </div>
             </Form>
         </Container>
