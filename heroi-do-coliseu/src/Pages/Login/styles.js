@@ -6,7 +6,7 @@ export const Container = styled.div`
     align-items: center;
     height: 100vh;
     min-width:100vw;
-    background: #383838;
+    background: #26221B;
 `
 
 export const Form = styled.form`
@@ -15,32 +15,38 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    background-color: #201d1d;
+    background-color: #EDB561;
     border-radius: 30px;
     width 100%;
     max-width: 450px;
     gap: 30px 0px;
 
     h1 {
-        color: white;
+        color: #26221B;
         font-size: 24.5px;
         font-weight: bold;
     }
     h2 {
-        color: white;
+        color: #3D3828;
         font-size: 21px;
         font-weight: bold;
         text-align: center;
     }
 
     p {
-        color: white;
+        color: #3D3828;
         font-size: 16px;
         font-weight: bold;
+        text-align: center;
     }
 
     a {
+        color: #26221B;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: bold; 
+    }
+    a:hover {
         color: white;
-        font-size: 14px;
     }
 `

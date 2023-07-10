@@ -5,17 +5,21 @@ import {Container, Form} from './styles';
 import InputLogin from '../../Components/InputLogin';
 import BotaoLogin from '../../Components/ButtonLogin';
 
-import {validarEmail, validarSenha} from '../../Utils/validators';
-import database from '../../Firebase/index';
-import {getAuth, signInWithEmailAndPassword, signOut, sendEmailVerification} from 'firebase/auth';
+import { NavLink, useNavigate } from 'react-router-dom'
 
-const auth = getAuth();
+import {auth} from '../../Firebase';
+import {validarEmail, validarSenha} from '../../Utils/validators';
+import {signInWithEmailAndPassword, signOut, sendEmailVerification} from 'firebase/auth';
+
+
 
 const Login = () => {
 
     const [loading, setLoading] = useState()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
 
     const user = {
         userEmail: email,
@@ -29,20 +33,17 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            setLoading(true);
-            const response = await signInWithEmailAndPassword(auth, user.userEmail, user.userPassword);
-            localStorage.setItem("email", response.user.userEmail);
-            localStorage.setItem("pass", response.user.userPassword);
-
-
-            if (response.user) {
-                alert('Usuário logado com sucesso!');
-                //navegar para a home
-            }
-            
-            setLoading(false);
+        const credentials = await signInWithEmailAndPassword(auth, email, password);
+        if(!credentials.user.emailVerified) {
+            throw new Error("Valide o seu email!!!")
         }
-        catch (error) {
+        setLoading(false);
+
+         // Signed in
+         const user = credentials;
+        navigate("/home")
+        console.log(user);
+        }catch (error) {
             console.log('Erro ao fazer login: ' + error);
             switch (error.code) {
               case 'auth/user-not-found':
@@ -70,7 +71,7 @@ const Login = () => {
                 setLoading(false);
                 break;
             }
-          }
+          };
     }
 
     return(
@@ -90,8 +91,7 @@ const Login = () => {
                     disabled={loading === true || !validadorInput()}
                 />
                 <div>
-                    <p>Não possui conta?</p>
-                    <a href='*'>Cadastrar</a>
+                    <p>Não possui conta? <a href='/cadastro'>Cadastre-se aqui.</a></p>
                 </div>
             </Form>
         </Container>

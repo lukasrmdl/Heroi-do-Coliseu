@@ -10,8 +10,336 @@ const GlobalStyle = createGlobalStyle`
  body {
     width: 100vw;
     height: 100vh;
-    background-color: #f0f2f5;
+    background-color: #26221B;
     font-family: Helvetica;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    overflow-x: hidden;
+ }
+ header {
+   display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80px;
+	padding: 0 2rem;
+   background-color:#26221B;
+   color: #EDB561;
+ }
+ nav a {
+   font-size: 1.2rem;
+   margin: 0 1rem;
+   color: #EDB561;
+   text-decoration: none;
+ }
+ nav a:hover {
+   color: white;
+ }
+ header .nav-btn {
+   padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+   color: #EDB561;
+	font-size: 1.2rem;
+   margin: 0 1rem;
+ }
+ header .nav-btn:hover {
+   color: white;
+ }
+ header div,header div, nav {
+	display: flex;
+	align-items: center;
+}
+#img_icon {
+   width: 6em;
+   height: 6em;
+   margin: 0 1rem;
+}
+.templateContainer{
+    margin: 0 0;
+    width: 120vh;
+}
+.templateContainer > .searchInput_Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.templateContainer > .searchInput_Container input{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    color: #EDB561;
+    background-color: #26221B;
+    border: 2px solid #26221B;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   input::placeholder {
+      color: #EDB561;
+      font-size: 10px;
+      opacity 0.8;
+   }  
+}
+.templateContainer .template_Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    max-width: 10rem;
+    background:transparent;
+    border-radius: 10px;
+}
+#nome_equip {
+   margin-bottom:.5rem;
+}
+
+.templateContainer .template_Container .template img{
+    height: 250px;
+}
+#img_personagems {
+   width: 80px;
+}
+#img_equipamentos {
+   width: 80px;
+   margin-top: .4rem;
+   margin-bottom: .5rem;
+}
+#buttonSearch1 {
+   color: #757575;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 8px;
+    margin-top:.5rem;
+    outline: none;
+    background-color: #26221B;
+    border: 2px solid #26221B;
+}
+#buttonSearch2 {
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 8px;
+    margin-top:.5rem;
+    margin-left: .3rem;
+    outline: none;
+    color: #757575;
+    background-color: #26221B;
+    border: 2px solid #26221B;
+}
+#buttonSearch3 {
+   color: #757575;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 8px;
+    margin-top:.5rem;
+    margin-left: .3rem;
+    outline: none;
+    background-color: #26221B;
+    border: 2px solid #26221B;
+}
+#buttonSearch1:hover {
+   color: #EDB561;
+}
+#buttonSearch2:hover {
+   color: #EDB561;
+}
+#buttonSearch3:hover {
+   color: #EDB561;
+}
+
+#buttonSearch1.active,
+  #buttonSearch2.active,
+  #buttonSearch3.active {
+    color: #EDB561;
+  }
+  .personagemTemplate {
+  border-radius: 15px;
+  background-color: #26221B;
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px; /* Ajuste a largura conforme necessário */
+  margin: 10px; /* Espaçamento entre os personagens */
+}
+
+.personagemTemplate h2,
+.personagemTemplate h3,
+.personagemTemplate .price {
+  color: #EDB561;
+  margin: .5px 0;
+  text-align: center;
+}
+
+//home page
+
+.container {
+   display: flex;
+   text-align: center;
+   flex-direction:column;
+   justify-content: space-between;
+   width: 100%;
+   height: 100vh;
+}
+#header_home {
+   margin-top:2rem;
+   background: #EDB561;
+   color: #26221B;
+   padding: 0 15px;
+}
+#header_home p {
+   font-weight:bold;
+   font-size:30px;
+   display:none;
+}
+.box-titulo {
+   background-color:#3D3828;
+   padding-bottom: 6rem;
+   text-align: center;
+}
+.box-titulo p {
+   text-align: justify;
+}
+.container h1 {
+   text-align: center;
+   color: #EDB561;
+   padding-top: 2.2rem;
+   padding-bottom: 2rem;
+   font-weight: bold;
+   font-size: 2.4rem;
+}
+.container h3 {
+   text-align: center;
+   color: #EDB561;
+   margin-top: 2rem;
+}
+.container h2 {
+   text-align: center;
+   color: #EDB561;
+   margin-top: 2rem;
+}
+.box-titulo p {
+   margin: 0 7rem 50px 7rem;
+   font-size: 24px;
+   color: white;
+}
+.box-titulo a {
+   text-align: center;
+   text-decoration:none;
+   color: #EDB561;
+   border: 2px solid #EDB561;
+   border-radius: 10px;
+   padding: 10px 20px;
+   font-size: 20px;
+}
+.box-titulo a:hover {
+   text-align: center;
+   font-size: 130%;
+   color: #EDB561;
+   background-color: #26221B;
+   transition: .2s all;
+}
+.box-requisitos {
+   padding: 30px 10px;
+   padding-bottom: 6rem;
+}
+.box-requisitos h1 {
+   padding-bottom: 2rem;
+   font-size: 3rem;
+   font-weight: bold;
+}
+#box-requisitos {
+   font-size: 24px;
+   color: white;
+   padding-bottom:5px;
+}
+.box-requisitos-pp {
+   font-size: 16px;
+   color: #3D3828;
+   text-align:center;
+   margin-left: 6px;
+   margin-right: 6px;
+}
+.box-cards{
+   display: flex;
+   justify-content: space-evenly;
+   width:100%;
+   margin-top: 80px;
+}
+.card {
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color:#EDB561;
+   width: calc((100% / 3) - 10px);
+   max-width: 300px;
+   margin:5px;
+   padding: 20px 15px;
+   border-radius: 5px;
+   box-shadow: 5px 5px rgb(61, 56, 40);
+}
+.card h3 {
+   color: black;
+   margin: 0 0 10px;
+}
+.card:hover {
+   background-color: #3D3828;
+   color: #EDB561;
+   transition: all .3s;
+}
+.card:hover p{
+   color: #EDB561;
+   transition: all .3s;
+}
+.card:hover h3 {
+   color: #EDB561;
+   transition: all .3s;
+}
+#footer_home {
+   font-Weight: bold;
+   color: #EDB561;
+   padding: .5rem;
+   background-color:#3D3828;
+}
+
+
+@media only screen and (max-width: 1024px) {
+	header .nav-btn {
+		visibility: visible;
+		opacity: 1;
+	}
+
+   header nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background-color: #26221B;
+      transition: 1s;
+      transform: translateY(-100vh);
+   }
+
+   header .responsive_nav {
+      transform: none;
+   }
+
+	nav .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+   
+   nav a {
+      font-size: 1.5rem;
+   }
  }
 `
 
