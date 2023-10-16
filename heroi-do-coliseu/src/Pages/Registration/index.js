@@ -7,6 +7,11 @@ import ButtonRegistration from '../../Components/ButtonRegistration';
 import {createUserWithEmailAndPassword, sendEmailVerification} from 'firebase/auth';
 import {validarEmail, validarNome, validarSenha} from '../../Utils/validators';
 import {auth} from '../../Firebase/index';
+import db from "../../Firebase/firestore";
+import {
+  collection,
+  addDoc,
+} from "firebase/firestore";
  
 const Registration = () => {
     const navigate = useNavigate();
@@ -31,10 +36,17 @@ const Registration = () => {
     try {
         const credentials = await createUserWithEmailAndPassword(auth, email, password);
         await sendEmailVerification(credentials.user)
+        const userDocRef = collection(db, 'users');
+
+        await addDoc(userDocRef, {
+          name,
+          email,
+        });
+
         navigate('/*');
         alert("Usuario criado verifique seu email!!!")
     } catch (e) {
-        console.error("Erro ao criar usuario: "+e.message)
+        console.error("Erro ao criar usuario: "+ e.message)
     }
 
     }

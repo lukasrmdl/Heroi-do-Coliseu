@@ -9,9 +9,8 @@ export const InputCustomizado = styled.input`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 16px 20px;
   width: 100%;
-    input::placeholder {
+    &::placeholder {
       color: #3D3828;
-      font-size: 10px;
-      opacity 0.7;
+      opacity: 0.7;
     }
 `

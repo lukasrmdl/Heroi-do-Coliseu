@@ -4,12 +4,15 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     min-width:100vw;
-    background: #26221B;
+    background: #3D3828;
 `
 
-export const Form = styled.form`
+
+export const Div = styled.div`
+    position: relative;
+    margin-top: 2em;
     display: flex;
     padding: 3rem;
     flex-direction: column;
@@ -17,7 +20,7 @@ export const Form = styled.form`
     justify-content: center;
     background-color: #EDB561;
     border-radius: 30px;
-    width 100%;
+    width: 100%;
     max-width: 600px;
     gap: 30px 0px;
 
@@ -42,7 +45,7 @@ export const Form = styled.form`
     }
 
     a {
-        color: #26221B;
+        color: #EDB561;
         font-size: 16px;
         text-decoration: none;
         font-weight: bold; 
@@ -52,3 +55,45 @@ export const Form = styled.form`
         color: white;
     }
 `
+
+export const ForumItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #26221B;
+  border-radius: 10px;
+  margin-bottom: 10px;
+`;
+
+export const ForumTitle = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const ForumDescription = styled.div`
+  font-size: 14px;
+  max-width: 100%;
+  margin-top: .5em;
+  margin-left: .8em;
+  white-space: nowrap;
+`;
+
+
+export const ForumInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const ForumDate = styled.div`
+  font-size: 12px;
+`;
+
+export const ForumAuthor = styled.div`
+  font-size: 12px;
+  font-style: italic;
+`;
+
+export const ForumForm = styled.div`
+`;

@@ -43,7 +43,7 @@ const handleSignOut = async () => {
           Finalizar Sessão <FaDungeon />
         </button>
       ) : (
-        <a href="/*">
+        <a href="/login">
           <button className="nav-btn">Acessar <FaDungeon /></button>
         </a>
       )}

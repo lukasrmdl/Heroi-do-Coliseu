@@ -17,7 +17,7 @@ export const Form = styled.form`
     justify-content: center;
     background-color: #EDB561;
     border-radius: 30px;
-    width 100%;
+    width: 100%;
     max-width: 450px;
     gap: 30px 0px;
 
