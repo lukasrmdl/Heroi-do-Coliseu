@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const Div = styled.div`
     position: relative;
     margin-top: 2em;
+    margin-bottom: 2em;
     display: flex;
     padding: 3rem;
     flex-direction: column;

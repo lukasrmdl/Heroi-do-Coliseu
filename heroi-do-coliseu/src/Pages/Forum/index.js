@@ -33,7 +33,8 @@ import Textarea from "@mui/joy/Textarea";
 
 const Forum = () => {
   const [forums, setForums] = useState([]);
-  const [isLoaded, setLoaded] = useState(false)
+  const [isLoaded, setLoaded] = useState(false);
+  const [noTopics, setNoTopics] = useState(false);
   const [creatingTopic, setCreatingTopic] = useState(false);
   const [topicTitle, setTopicTitle] = useState("");
   const [topicDescription, setTopicDescription] = useState("");
@@ -53,7 +54,13 @@ const Forum = () => {
     getDocs(query(collectionRef, orderBy("create_at", "asc")))
       .then((querySnap) => {
         const docs = querySnap.docs;
-        if (!docs.length) throw Error("Sem tópicos!");
+        if (!docs.length) {
+          setLoaded(true); // Define a variável isLoaded como true para permitir a criação normalmente
+          setNoTopics(true);
+          return; // Não há fóruns, retorna sem preencher os fóruns
+        }else{
+          setNoTopics(false);
+        }
 
         const forums = docs.map((doc) => ({
           id: doc.id,
@@ -150,31 +157,42 @@ const Forum = () => {
   return (
     <Container>
       <Div>
-        <h1>Fórum - Tópicos</h1>
-        {isLoaded ?
-        <ul>
-          {forums.map((forum) => (
-            <Link to={`/forum/${forum.id}`} key={forum.id}>
-              <ForumItem>
-                <div>
-                  <ForumTitle>{forum.title.substring(0, 31)}</ForumTitle>
-                  <ForumDescription>
-                    {forum.description.substring(0, 35)}
-                  </ForumDescription>
-                </div>
-                <ForumInfo>
-                  <ForumDate>
-                    {forum.create_at
-                      ? forum.create_at.toDate().toLocaleDateString()
-                      : ""}
-                  </ForumDate>
-                  <ForumAuthor>Autor: {forum.owner}</ForumAuthor>
-                </ForumInfo>
-              </ForumItem>
-            </Link>
-          ))}
-        </ul>
-         : <div className="c-loader"></div>}
+        <h1>Tópicos em Aberto</h1>
+        {isLoaded ? (
+            <ul>
+              {forums.map((forum) => (
+                <Link to={`/forum/${forum.id}`} key={forum.id}>
+                  <ForumItem>
+                    <div>
+                      <ForumTitle>
+                      {forum.title.length > 31
+                        ? forum.title.substring(0, 31) + "..."
+                        : forum.title}          
+                      </ForumTitle>
+                      <ForumDescription>
+                      {forum.description.length > 40
+                        ? forum.description.substring(0, 40) + "..."
+                        : forum.description}
+                      </ForumDescription>
+                    </div>
+                    <ForumInfo>
+                      <ForumDate>
+                        {forum.create_at
+                          ? forum.create_at.toDate().toLocaleDateString()
+                          : ""}
+                      </ForumDate>
+                      <ForumAuthor>Autor: {forum.owner}</ForumAuthor>
+                    </ForumInfo>
+                  </ForumItem>
+                </Link>
+              ))}
+            </ul>
+        ) : (
+          <div className="c-loader"></div>
+        )}
+          {noTopics && (
+          <p>Não há tópicos disponíveis. Você pode criar o primeiro tópico!</p>
+        )}
 
         {/* Botão para exibir o formulário de criação de tópico */}
         <BotaoForm type="button" text={buttonText} onClick={handleShowForm} />
@@ -198,7 +216,6 @@ const Forum = () => {
                 value={topicDescription}
                 onChange={(e) => setTopicDescription(e.target.value)}
               />
-              ;
               <BotaoEnviaForm
                 type="submit"
                 text="Criar!"

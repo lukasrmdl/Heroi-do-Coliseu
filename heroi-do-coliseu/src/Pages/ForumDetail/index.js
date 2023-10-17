@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { FaTrash } from 'react-icons/fa';
 
 import db from "../../Firebase/firestore";
 import { auth } from "../../Firebase";
@@ -16,10 +17,10 @@ import {
   deleteDoc,
   addDoc,
   serverTimestamp,
-  onSnapshot,
 } from "firebase/firestore";
 
 import {
+  TextBox,
   Container,
   LinkForum,
   Div,
@@ -30,7 +31,6 @@ import {
   CommentAuthor,
   TopicDetailsAuthor,
   TopicDetailsCreated,
-  ButtonLink,
 } from "./styles";
 import BotaoForm from "../../Components/ButtonForm";
 import BotaoEnviaForm from "../../Components/ButtonSendForm";
@@ -38,16 +38,49 @@ import Textarea from "@mui/joy/Textarea";
 import BotaoDelTopic from "../../Components/ButtonDelTopic";
 
 const MessageItem = ({ message }) => {
+  const [isOwner, setIsOwner] = useState(false);
+  const { currentUser } = auth;
+  const navigate = useNavigate();
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
+  if (currentUser && message.owner_uid === `users/${currentUser.uid}`) {
+    setIsOwner(true);
+  }
+
+  const handleDeleteMessage = async () => {
+    const userConfirmed = window.confirm("Tem certeza de que deseja excluir a mensagem?");
+    if (userConfirmed) {
+      const messageIDToDelete = message.message_id;
+        try {
+          await deleteDoc(doc(db, "forums_messages", messageIDToDelete));
+          alert("Mensagem excluída com sucesso!");
+          window.location.reload();
+        } catch (error) {
+          console.error("Erro ao excluir a mensagem:", error);
+        }
+    } else {
+      setShowDeleteConfirmation(false); // Cancelar a exclusão se o usuário cancelar
+    }
+  };
+
+
   return (
     <ForumComment>
       <CommentText>{message.text}</CommentText>
       <CommentInfo>
-      <CommentAuthor>Autor: {String(message.owner)}</CommentAuthor>
+        <CommentAuthor>Autor: {message.owner}</CommentAuthor>
         <CommentDate>
           {message.create_at
             ? message.create_at.toDate().toLocaleDateString()
             : ""}
         </CommentDate>
+        {currentUser && currentUser.uid === message.owner_uid && (
+          <div className="delete-commnent">
+          <button type="button" onClick={handleDeleteMessage}>
+          <FaTrash />
+          </button>
+          </div>
+        )}
       </CommentInfo>
     </ForumComment>
   );
@@ -70,7 +103,6 @@ const ForumDetail = () => {
   );
 
   const { currentUser } = auth;
-
 
   useEffect(() => {
     const forumRef = doc(db, "forums", id);
@@ -144,7 +176,6 @@ const ForumDetail = () => {
         }
   };
 
-
   const confirmDelete = async () => {
     if (isOwner) {
       try {
@@ -207,10 +238,16 @@ const ForumDetail = () => {
     if (userName !== null) {
       try {
         messageRef = await addDoc(collectionRef, {
+          message_id: "",
           create_at: timestamp,
           owner: userName,
+          owner_uid: currentUser.uid,
           responds: respondsValue,
           text: responseText,
+        });
+
+        await updateDoc(messageRef, {
+          message_id: messageRef.id,
         });
       
         await updateDoc(doc(db, "forums", id), {
@@ -235,10 +272,12 @@ const ForumDetail = () => {
   return (
     <Container>
       <Div>
-      <Link to="/forum"><LinkForum>Voltar para a lista de fóruns</LinkForum></Link>
+      <Link to="/forum"><LinkForum>Voltar</LinkForum></Link>
         <div>
-          <h1>Tópico: {forum.title}</h1>
-          <h2>{forum.description}</h2>
+          <TextBox>
+            <h1>{forum.title}</h1>
+            <h2>{forum.description}</h2>
+          </TextBox>
           <TopicDetailsAuthor>Autor: {forum.owner_name}</TopicDetailsAuthor>
           <TopicDetailsCreated>
             Criação:{" "}
@@ -281,7 +320,7 @@ const ForumDetail = () => {
             </div>
           )}
 
-          {/* Botões de edição e exclusão (exibidos apenas se o usuário for o proprietário) */}
+          {/* Botões de exclusão (exibidos apenas se o usuário for o proprietário) */}
           {isOwner && (
             <div>
               <BotaoDelTopic type="button" text="Excluir Tópico" onClick={handleDeleteForum}>

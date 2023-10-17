@@ -34,10 +34,16 @@ const GlobalStyle = createGlobalStyle`
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-top: -59.2em;
+  margin-top: -58.5em;
   margin-right: 1.2em;
 }
 
+.delete-commnent button {
+  color:#EDB561;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
 .nav-link {
   text-decoration: none;

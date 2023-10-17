@@ -44,7 +44,8 @@ const Login = () => {
         try {
         const credentials = await signInWithEmailAndPassword(auth, email, password);
         if(!credentials.user.emailVerified) {
-            throw new Error("Valide o seu email!!!")
+            alert('Erro, Por favor. Verifique o seu email para acessar!');
+            return;
         }
         setLoading(false);
 
@@ -78,6 +79,7 @@ const Login = () => {
               default:
                 alert('Erro ao fazer Acesso!');
                 setLoading(false);
+                console.log(error);
                 break;
             }
           };

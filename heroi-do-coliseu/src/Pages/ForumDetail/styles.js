@@ -16,6 +16,11 @@ export const pTitle = styled.p`
     font-weight: bold;
     text-align: left;
 `
+export const TextBox = styled.div`
+  background: rgba(38, 34, 27, 0.1);
+  border-radius: 10px;
+  padding: 1em;
+`
 
 export const pTitleData = styled.p`
     color: #3D3828;
@@ -27,9 +32,11 @@ export const pTitleData = styled.p`
 
 export const LinkForum = styled.p`
     color: #3D3828;
-    margin: 1em auto;
+    margin: .5em;
+    margin-bottom: 1.5em;
     padding: 5px;
     font-size: 1em;
+    width: 20%;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
@@ -44,12 +51,10 @@ export const LinkForum = styled.p`
     }
 `
 
-
-
 export const Div = styled.div`
     position: relative;
     display: flex;
-    padding: 5rem;
+    padding: 4rem;
     margin-top: 2em;
     flex-direction: column;
     align-items: left;
@@ -58,14 +63,13 @@ export const Div = styled.div`
     border-radius: 30px;
     width: 100%;
     max-width: 600px;
-    max-height: 40em;
     gap: 30px 0px;
 
     overflow-y: auto; 
 
     h1 {
         color: #26221B;
-        font-size: 27.5px;
+        font-size: 2.5em;
         font-weight: bold;
         text-align: center;
         margin-bottom: 15px;
@@ -116,7 +120,6 @@ export const CommentText = styled.p`
   max-width: 100%;
   margin-top: .5em;
   margin-left: .4em;
-  white-space: nowrap;
 `;
 
 export const CommentInfo = styled.div`
@@ -142,7 +145,9 @@ export const TopicDetailsAuthor = styled.p`
   font-size: 15px;
   font-style: bold;
   color: #26221B;
-  margin-right: 5px; `;
+  margin-right: 5px; 
+  margin-top: 1.5em;
+  `
 export const TopicDetailsCreated = styled.p`
   font-size: 15px;
   font-style: bold;

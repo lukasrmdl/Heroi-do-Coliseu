@@ -41,12 +41,10 @@ const Registration = () => {
       setLoading(true);
       event.preventDefault()
 
-
       try {
         const credentials = await createUserWithEmailAndPassword(auth, email, password);
         await sendEmailVerification(credentials.user)
         const userDocRef = collection(db, 'users');
-    
 
         await addDoc(userDocRef, {
           name,
@@ -54,8 +52,10 @@ const Registration = () => {
         });
         setLoading(false);
 
-        navigate('/*');
-        alert("Usuario criado verifique seu email!!!")
+        alert("Usuario criado com sucesso. verifique seu email!!!")
+        navigate('/login');
+        auth.signOut(); 
+
     } catch (error) {
       console.log('Erro ao fazer acesso: ' + error);
       switch (error.code) {
