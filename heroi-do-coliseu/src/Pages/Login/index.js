@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import {Container, Form} from './styles';
+
+import {Container, Form, DivValidate, LinkSenha} from './styles';
 import InputLogin from '../../Components/InputLogin';
 import BotaoLogin from '../../Components/ButtonLogin';
 
@@ -11,13 +14,14 @@ import {auth} from '../../Firebase';
 import {validarEmail, validarSenha} from '../../Utils/validators';
 import {signInWithEmailAndPassword, signOut, sendEmailVerification} from 'firebase/auth';
 
-
-
 const Login = () => {
 
     const [loading, setLoading] = useState()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [buttonClicked, setButtonClicked] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -30,8 +34,13 @@ const Login = () => {
         return validarEmail(email) && validarSenha(password)
     }
 
+    const handleButtonClick = () => {
+        setButtonClicked(true);
+      }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
         const credentials = await signInWithEmailAndPassword(auth, email, password);
         if(!credentials.user.emailVerified) {
@@ -40,11 +49,11 @@ const Login = () => {
         setLoading(false);
 
          // Signed in
-         const user = credentials;
+        const user = credentials;
         navigate("/home")
         console.log(user);
         }catch (error) {
-            console.log('Erro ao fazer login: ' + error);
+            console.log('Erro ao fazer acesso: ' + error);
             switch (error.code) {
               case 'auth/user-not-found':
                 alert('Erro, Usuário não encontrado!');
@@ -67,12 +76,16 @@ const Login = () => {
                 setLoading(false);
                 break;
               default:
-                alert('Erro ao fazer login!');
+                alert('Erro ao fazer Acesso!');
                 setLoading(false);
                 break;
             }
           };
     }
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     return(
         <Container>
@@ -81,9 +94,15 @@ const Login = () => {
                     <h1>Olá!</h1> 
                     <h1>Seja Bem vindo de volta.</h1>
                 </div>
-                <h2>faça o seu login agora</h2>
+                <h2>Faça o seu acesso agora</h2>
                 <InputLogin name='emailLogin' placeholder='Digite o seu e-mail' onChange={(e) => setEmail(e.target.value)} type='email'/>
-                <InputLogin name='passwordLogin' placeholder='Digite a sua senha' onChange={(e) => setPassword(e.target.value)} type='password'/>
+                <InputLogin name='passwordLogin' placeholder='Digite a sua senha' onChange={(e) => setPassword(e.target.value)}  type={showPassword ? 'text' : 'password'}/>
+                <div className="password-toggle">
+                    <button type='button' onClick={togglePasswordVisibility}>
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                    </button>
+                </div>
+                <LinkSenha href='/recuperarSenha'>Esqueci minha senha</LinkSenha>
                 <BotaoLogin
                     type='submit'
                     text='Entrar!'
@@ -93,6 +112,9 @@ const Login = () => {
                 <div>
                     <p>Não possui conta? <a href='/cadastro'>Cadastre-se aqui.</a></p>
                 </div>
+                    <DivValidate>
+                        <h4>Certifique-se de preencher os  <br /> campos email e senha corretamente  <br />para liberar o acesso.</h4>
+                    </DivValidate>
             </Form>
         </Container>
     )

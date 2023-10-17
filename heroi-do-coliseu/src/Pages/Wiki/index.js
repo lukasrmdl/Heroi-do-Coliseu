@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useState } from 'react';
-import { Container } from './styles'; // I removed Form since it's not used in the code
+import { Container } from './styles'; 
 import { collection } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import db from '../../Firebase/firestore';
@@ -66,7 +66,6 @@ const Wiki = () => {
           {loadingPersonagens || loadingArenas || loadingEquipamentos ? (
             <div className="c-loader"></div>
           ) : (
-            // Data is loaded, render the content
             docsToShow &&
             docsToShow
               .filter((doc) => {

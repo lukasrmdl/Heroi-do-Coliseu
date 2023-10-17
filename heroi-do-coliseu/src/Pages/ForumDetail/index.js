@@ -42,12 +42,12 @@ const MessageItem = ({ message }) => {
     <ForumComment>
       <CommentText>{message.text}</CommentText>
       <CommentInfo>
+      <CommentAuthor>Autor: {String(message.owner)}</CommentAuthor>
         <CommentDate>
           {message.create_at
             ? message.create_at.toDate().toLocaleDateString()
             : ""}
         </CommentDate>
-        <CommentAuthor>Autor: {String(message.owner)}</CommentAuthor>
       </CommentInfo>
     </ForumComment>
   );
@@ -239,7 +239,7 @@ const ForumDetail = () => {
         <div>
           <h1>Tópico: {forum.title}</h1>
           <h2>{forum.description}</h2>
-          <TopicDetailsAuthor>Autor: {forum.owner}</TopicDetailsAuthor>
+          <TopicDetailsAuthor>Autor: {forum.owner_name}</TopicDetailsAuthor>
           <TopicDetailsCreated>
             Criação:{" "}
             {forum.create_at

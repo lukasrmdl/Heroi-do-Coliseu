@@ -7,6 +7,7 @@ import Forum from '../Pages/Forum/index';
 import Download from '../Pages/Download/index';
 import Login from '../Pages/Login';
 import ForumDetail from '../Pages/ForumDetail';
+import RecuperarSenha from '../Pages/RecuperarSenha';
 
 
 import UserScreen from '../Pages/UserScreen';
@@ -27,6 +28,7 @@ const Routering = () => {
                 <Route path="/forum/:id" element={<ForumDetail />} />
                 <Route path="/wiki" element={<Wiki/>}/>
                 <Route path="/download" element={<Download/>}/>
+                <Route path="/recuperarSenha" element={<RecuperarSenha/>}/>
                 <Route path="/perfil" element={<ProtectedRoutes><UserScreen/></ProtectedRoutes>}/>
             </Routes>
         </Router>

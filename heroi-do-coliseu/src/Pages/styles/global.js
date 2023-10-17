@@ -7,7 +7,48 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
  }
  scrollbar-thumb {
-      background: #EDB561; /* Cor de fundo da alça */
+      background: #EDB561;
+}
+
+.password-toggle {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.password-toggle button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: -9em;
+  margin-right: 1.2em;
+}
+
+.password-toggle-r {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.password-toggle-r button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: -59.2em;
+  margin-right: 1.2em;
+}
+
+
+.nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  cursor: pointer; 
+}
+
+.nav-link.active {
+  color: #fff; 
+  border-bottom: #fff .1em solid;
 }
 
  body {

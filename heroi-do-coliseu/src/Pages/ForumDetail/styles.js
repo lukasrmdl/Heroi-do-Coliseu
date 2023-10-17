@@ -34,7 +34,17 @@ export const LinkForum = styled.p`
     text-align: center;
     border-radius: 5px;
     border: 1px #3D3828 solid;
+    &:hover {
+      color: #fff; 
+      border-color: #fff;
+    }
+    &:active {
+      color: #3D3828; 
+      border-color: #3D3828;
+    }
 `
+
+
 
 export const Div = styled.div`
     position: relative;
@@ -102,10 +112,10 @@ export const ForumComment = styled.div`
 
 export const CommentText = styled.p`
   color: #EDB561;
-  font-size: 14px;
+  font-size: 15px;
   max-width: 100%;
   margin-top: .5em;
-  margin-left: .8em;
+  margin-left: .4em;
   white-space: nowrap;
 `;
 
@@ -113,20 +123,20 @@ export const CommentInfo = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%; 
-  margin-top: 5px; 
+  margin-top: 1.5em; 
 `;
 
 export const CommentDate = styled.p`
   font-size: 12px;
-  color: #AD8D5E;
+  color: #725d39;
   margin-left: 5px; 
 `;
 
 export const CommentAuthor = styled.p`
   font-size: 12px;
   font-style: italic;
-  color: #AD8D5E;
-  margin-right: 5px; 
+  color: #725d39;
+  margin-left: .5em; 
 `;
 export const TopicDetailsAuthor = styled.p`
   font-size: 15px;

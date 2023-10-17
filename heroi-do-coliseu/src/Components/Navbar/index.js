@@ -6,6 +6,8 @@ import {auth} from '../../Firebase/index';
 
 function Navbar() {
     const [currentUser, setCurrentUser] = useState(null);
+    const currentPath = window.location.pathname; // Obtenha a URL atual
+
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -32,10 +34,18 @@ const handleSignOut = async () => {
             <img id="img_icon" src={logo} alt="Descrição da imagem" />
             <nav>
                 <div>
-                    <a href="/home">Home</a>
-                    <a href="/wiki">Wiki</a>
-                    <a href="/forum">Forum</a>
-                    <a href="/download">Download</a>
+                <a className={`nav-link ${currentPath === '/home' ? 'active' : ''}`} href="/home">
+                  Home
+                </a>
+                <a className={`nav-link ${currentPath === '/wiki' ? 'active' : ''}`} href="/wiki">
+                  Wiki
+                </a>
+                <a className={`nav-link ${currentPath === '/forum' ? 'active' : ''}`} href="/forum">
+                  Forum
+                </a>
+                <a className={`nav-link ${currentPath === '/download' ? 'active' : ''}`} href="/download">
+                  Download
+                </a>
                 </div>
             </nav>
             {currentUser ? (

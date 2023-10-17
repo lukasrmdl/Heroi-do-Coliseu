@@ -64,6 +64,7 @@ export const ForumItem = styled.li`
   background-color: #26221B;
   border-radius: 10px;
   margin-bottom: 10px;
+  text-align: left;
 `;
 
 export const ForumTitle = styled.div`
@@ -77,6 +78,7 @@ export const ForumDescription = styled.div`
   margin-top: .5em;
   margin-left: .8em;
   white-space: nowrap;
+  color: #725d39;
 `;
 
 
@@ -84,13 +86,16 @@ export const ForumInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  color: #725d39;
 `;
 
 export const ForumDate = styled.div`
   font-size: 12px;
+  color: #725d39;
 `;
 
 export const ForumAuthor = styled.div`
+  margin-top: .5em;
   font-size: 12px;
   font-style: italic;
 `;

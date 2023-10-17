@@ -157,9 +157,9 @@ const Forum = () => {
             <Link to={`/forum/${forum.id}`} key={forum.id}>
               <ForumItem>
                 <div>
-                  <ForumTitle>{forum.title}</ForumTitle>
+                  <ForumTitle>{forum.title.substring(0, 31)}</ForumTitle>
                   <ForumDescription>
-                    {forum.description.substring(0, 15)}
+                    {forum.description.substring(0, 35)}
                   </ForumDescription>
                 </div>
                 <ForumInfo>
