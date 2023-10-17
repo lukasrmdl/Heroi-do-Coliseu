@@ -9,12 +9,12 @@ const Home = () => {
             <main>
                 <section className='box-titulo'>
                     <h1>Herói do Coliseu</h1>
-                    <p>Prepare-se para uma experiência única e emocionante no mundo dos gladiadores. Nosso jogo coloca você no papel de um gladiador corajoso em busca de glória e honra nas arenas mais renomadas do Império Romano.</p>
+                    <p>Prepare-se para uma experiência única e emocionante no mundo dos gladiadores. Nosso jogo coloca você no papel de um guerreiro corajoso em busca de glória e honra nas arenas mais renomadas do Império Romano.</p>
                     <p>Estás pronto para entrar nas Arenas de toda roma e provar seu valor como um verdadeiro campeão? Junte-se a nós e comece sua jornada rumo à grandeza!</p>
                     <a href='/download'>Clique aqui para saber mais</a>
                 </section>
                 <section className='box-requisitos'>
-                    <h1>features</h1>
+                    <h1>Features</h1>
                     <p id='box-requisitos'>O jogo ainda está em desenvolvimento, então pedimos para que tenha paciência.</p>
                     <p id='box-requisitos'>Veja abaixo quais são os objetivos do nosso jogo!</p>
                     <div className='box-cards'>

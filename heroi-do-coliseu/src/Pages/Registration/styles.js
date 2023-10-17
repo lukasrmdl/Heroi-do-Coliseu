@@ -4,9 +4,23 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   min-width: 100vw;
-  background-color: #26221B
+  background-color: #3D3828;
+`
+export const DivValidatePass = styled.div`
+    background-color: #ED8561;
+    color: #fff;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+    font-weight: bold; 
+    width: 100%;
+    margin: auto;
+    h4 {
+      text-align: justify;
+      padding: 10px;
+    }
 `
 
 export const Form = styled.form`
@@ -20,7 +34,8 @@ export const Form = styled.form`
   width: 100%;
   max-width: 450px;
   gap: 20px 0px;
-  margin-top: 8rem;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
 
   h1 {
     color: #26221B;

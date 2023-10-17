@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useState } from 'react';
-import { Container, Form } from './styles';
+import { Container } from './styles'; 
 import { collection } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import db from '../../Firebase/firestore';
 
 const Wiki = () => {
+  const [isLoaded, setLoaded] = useState(false);
   const queryPersonagens = collection(db, 'wiki_personagens');
   const queryArenas = collection(db, 'wiki_arenas');
   const queryEquipamentos = collection(db, 'wiki_equipamentos');
@@ -62,7 +63,10 @@ const Wiki = () => {
           </button>
         </div>
         <div className='template_Container'>
-          {docsToShow &&
+          {loadingPersonagens || loadingArenas || loadingEquipamentos ? (
+            <div className="c-loader"></div>
+          ) : (
+            docsToShow &&
             docsToShow
               .filter((doc) => {
                 if (searchTerm === '') {
@@ -98,7 +102,8 @@ const Wiki = () => {
                     </p>
                   </div>
                 </div>
-              ))}
+              ))
+          )}
         </div>
       </div>
     </Container>

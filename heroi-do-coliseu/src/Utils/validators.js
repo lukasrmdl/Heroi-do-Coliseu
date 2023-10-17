@@ -3,11 +3,12 @@ const validarEmail = (email) => {
 }
   
 const validarSenha = (senha) => {
-    return senha?.toString().length > 5
+    const senhaRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    return senhaRegex.test(senha);
 }
 
 const validarNome = (nome) => {
-    return nome?.toString().length > 2
+    return nome?.toString().length > 2 && nome?.toString().length < 15
 }
 
 const validarConfirmarSenha = (senha, confirmarSenha) => {

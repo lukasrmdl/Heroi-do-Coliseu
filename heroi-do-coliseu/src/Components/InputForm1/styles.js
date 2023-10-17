@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const InputCustomizado = styled.input`
   color: #26221B;
-  font-size: 20px;
+  margin-bottom: 1em;
+  font-size: 16px;
   background-color: transparent;
   border: 2px solid #26221B;
   border-radius: 10px;
