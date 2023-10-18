@@ -109,6 +109,7 @@ const GlobalStyle = createGlobalStyle`
    margin: 1 1rem;
    margin-bottom: 1.5rem;
 }
+
 .templateContainer{
     margin: 0 0;
     width: 120vh;
@@ -138,21 +139,22 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin-bottom: 0;
     margin-top: 1rem;
-    max-width: 10rem;
+    max-width: 100%;
     background:transparent;
     border-radius: 10px;
-}
-#nome_equip {
-   margin-bottom:.5rem;
+    flex-wrap: wrap;
 }
 
-.templateContainer .template_Container .template img{
-    height: 250px;
+#nome_equip {
+   margin-bottom:.5rem;
+   padding-top: .2em;
 }
+
 #img_personagems {
-   width: 80px;
+   width: 40%;
+   margin: .5em;
 }
 #img_equipamentos {
    width: 80px;
@@ -206,16 +208,18 @@ const GlobalStyle = createGlobalStyle`
   #buttonSearch3.active {
     color: #EDB561;
   }
+  
   .personagemTemplate {
   border-radius: 15px;
   background-color: #26221B;
   height: 35vh;
+  min-height: 35%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 200px; /* Ajuste a largura conforme necessário */
-  margin: 10px; /* Espaçamento entre os personagens */
+  width: 13em; /* Ajuste a largura conforme necessário */
+  margin: 1em; /* Espaçamento entre os personagens */
 }
 
 .personagemTemplate h2,
