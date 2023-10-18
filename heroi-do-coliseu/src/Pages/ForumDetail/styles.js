@@ -36,7 +36,7 @@ export const LinkForum = styled.p`
     margin-bottom: 1.5em;
     padding: 5px;
     font-size: 1em;
-    width: 20%;
+    width: 30%;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
