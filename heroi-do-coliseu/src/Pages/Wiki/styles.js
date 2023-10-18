@@ -5,9 +5,9 @@ export const Container = styled.div`
     justify-content: center;
     align-items: top;
     padding: 2rem;
-    height: 100vh;
+    height: 100%;
     min-width:100vw;
-    background: #EDB561;
+    background: #3D3828;
     margin-top:2rem;
 `
 
