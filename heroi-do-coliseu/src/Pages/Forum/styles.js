@@ -56,7 +56,6 @@ export const Div = styled.div`
         color: white;
     }
 `
-
 export const ForumItem = styled.li`
   display: flex;
   justify-content: space-between;
@@ -78,7 +77,7 @@ export const ForumDescription = styled.div`
   max-width: 100%;
   margin-top: .5em;
   margin-left: .8em;
-  white-space: nowrap;
+  white-space: wrap;
   color: #725d39;
 `;
 

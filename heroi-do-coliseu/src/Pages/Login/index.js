@@ -52,7 +52,6 @@ const Login = () => {
          // Signed in
         const user = credentials;
         navigate("/home")
-        console.log(user);
         }catch (error) {
             console.log('Erro ao fazer acesso: ' + error);
             switch (error.code) {
