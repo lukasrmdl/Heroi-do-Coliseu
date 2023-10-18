@@ -221,6 +221,9 @@ const GlobalStyle = createGlobalStyle`
   width: 13em; /* Ajuste a largura conforme necessário */
   margin: 1em; /* Espaçamento entre os personagens */
 }
+.personagemTemplate:hover  {
+   outline: 1px solid #EDB561;
+}
 
 .personagemTemplate h2,
 .personagemTemplate h3,
