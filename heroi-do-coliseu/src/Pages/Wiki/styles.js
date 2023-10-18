@@ -10,6 +10,19 @@ export const Container = styled.div`
     background: #3D3828;
     margin-top:2rem;
 `
+export const ArenaImage = styled.img`
+  width: 40%; /* Ajuste o tamanho desejado */
+  height: 40%; /* Ajuste o tamanho desejado */
+  border-radius: 20%; /* Isso arredondará as bordas da imagem */
+  margin-bottom: 1em;
+`;
+export const EquipImage = styled.img`
+  width: 30%; 
+  height: 30%;
+  border-radius: 10%; /* Isso arredondará as bordas da imagem */
+  margin-bottom: 1em;
+`;
+
 
 export const Form = styled.form`
     display: flex;

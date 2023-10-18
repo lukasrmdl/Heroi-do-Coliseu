@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useState } from 'react';
-import { Container } from './styles'; 
+import { Container, ArenaImage, EquipImage} from './styles'; 
 import { collection } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import db from '../../Firebase/firestore';
@@ -88,7 +88,10 @@ const Wiki = () => {
                       <img id='img_personagems' src={doc.img_personagem} alt='' />
                     )}
                     {searchType === 'equipamentos' && doc.img_equipamento && (
-                      <img id='img_equipamentos' src={doc.img_equipamento} alt='' />
+                      <EquipImage id='img_equipamentos' src={doc.img_equipamento} alt='' />
+                    )}
+                    {searchType === 'arenas' && doc.img_arena && (
+                      <ArenaImage  id='img_arena' src={doc.img_arena} alt='' />
                     )}
                     {searchType === 'personagens' && doc.nome_personagem && <h3>{doc.nome_personagem}</h3>}
                     {searchType === 'arenas' && doc.nome_arena && <h2>{doc.nome_arena}, {doc.local_arena}</h2>}
