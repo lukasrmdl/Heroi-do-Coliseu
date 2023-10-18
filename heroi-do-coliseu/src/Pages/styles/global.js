@@ -387,12 +387,56 @@ const GlobalStyle = createGlobalStyle`
    }
 }
 
+.nav-mobile {
+   display: none;
+}
+
 
 @media only screen and (max-width: 1024px) {
-	header .nav-btn {
-		visibility: visible;
-		opacity: 1;
-	}
+   header {
+
+ }
+   header .nav-btn {
+      display: none;
+   }
+   header .nav-btn:hover {
+      color: white;
+   }
+   .nav-desktop {
+      display: none;
+   }
+   #img_icon {
+      display: none;
+}
+
+.nav-mobile {
+   display: flex;
+   justify-content: center;
+}
+
+.nav-linkm {
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      cursor: pointer; 
+      font-size: 100%;
+      padding-left:.6em;
+      padding-right: .6em;
+      margin: auto;
+   }
+   .nav-linkm.active {
+      color: #fff; 
+      border-bottom: #fff .1em solid;
+   }
+
+   header nav {
+      height: 10%;
+      width: 100%;
+      display: flex;
+      gap: 0;
+      margin: auto;
+      background-color: #26221B;
+   }
    .box-requisitos-pp {
       font-size: 16px;
       color: #3D3828;
@@ -426,19 +470,6 @@ const GlobalStyle = createGlobalStyle`
       padding: 20px 15px;
       border-radius: 5px;
       box-shadow: 5px 5px rgb(61, 56, 40);
-   }
-   
-   header nav {
-      position: relative;
-      top: 10;
-      left: 0;
-      height: 10%;
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.3rem;
-      background-color: #26221B;
    }
 
    .box-titulo p {

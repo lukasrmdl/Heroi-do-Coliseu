@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { format } from 'date-fns';
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { FaTrash } from 'react-icons/fa';
@@ -63,7 +64,6 @@ const MessageItem = ({ message }) => {
     }
   };
 
-
   return (
     <ForumComment>
       <CommentText>{message.text}</CommentText>
@@ -71,9 +71,10 @@ const MessageItem = ({ message }) => {
         <CommentAuthor>Autor: {message.owner}</CommentAuthor>
         <CommentDate>
           {message.create_at
-            ? message.create_at.toDate().toLocaleDateString()
+            ? format(message.create_at.toDate(), "dd/MM/yyyy HH:mm")
             : ""}
         </CommentDate>
+        
         {currentUser && currentUser.uid === message.owner_uid && (
           <div className="delete-commnent">
           <button type="button" onClick={handleDeleteMessage}>
@@ -85,7 +86,6 @@ const MessageItem = ({ message }) => {
     </ForumComment>
   );
 };
-
 const ForumDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();

@@ -80,7 +80,7 @@ const Wiki = () => {
                 }
               })
               .map((doc) => (
-                <div className='Template' key={doc.id}>
+                <div className='Template' key={doc.id}> 
                   <div className='personagemTemplate'>
                     {searchType === 'equipamentos' && doc.nome_equipamento && <h3 id='nome_equip'>{doc.nome_equipamento}</h3>}
                     {searchType === 'personagens' && doc.classe_personagem && <h3>{doc.classe_personagem}</h3>}
