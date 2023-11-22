@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import {
@@ -40,6 +41,9 @@ const Forum = () => {
   const [topicDescription, setTopicDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [buttonText, setButtonText] = useState("Criar novo Tópico!"); // Variável de estado para o texto do botão
+  const [currentPage, setCurrentPage] = useState(0);
+  const perPage = 10; // Número de fóruns por página
+
 
   const { currentUser } = auth;
   const collectionRef = collection(db, "forums");
@@ -69,8 +73,12 @@ const Forum = () => {
           owner: doc.data().owner_name,
           create_at: doc.data().create_at,
         }));
-        setForums(forums);     
-        setLoaded(true)
+      // Paginação
+      const offset = currentPage * perPage;
+      const paginatedForums = forums.slice(offset, offset + perPage);
+
+      setForums(paginatedForums);
+      setLoaded(true);
       })
       .catch((e) => console.error(e.message));
   };

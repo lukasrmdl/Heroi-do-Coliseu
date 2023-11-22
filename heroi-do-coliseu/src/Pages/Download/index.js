@@ -7,7 +7,7 @@ const Download = () => {
         <Container>
             <Form>
                 <h1>Bem-vindo a <span>Área de Downloads</span></h1>
-                <p>Baixe a ultima versão e Comece a diversão agora mesmo!</p>
+                <p>Baixe a ultima versão, extraia e Comece a diversão agora mesmo!</p>
                 <a href={game} download>Clique aqui para baixar a ultima versão!</a>
             </Form>
         </Container>
