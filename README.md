@@ -28,4 +28,4 @@ You can download **Hero of the Coliseum** from the following link: [Download Lin
 The game was developed using a *Roguelite* approach, taking elements from *Roguelike* games and combining them with *Shoot 'em up* mechanics to provide an engaging learning experience. The project involved extensive bibliographical research on the historical period, as well as an analysis of similar systems to refine the game's design and mechanics.  
 
 ## License  
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.  
+This project is licensed, contact me by email: lukas.rmdl@gmail.com for details.  
